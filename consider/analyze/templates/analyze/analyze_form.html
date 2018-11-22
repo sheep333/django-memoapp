@@ -1,0 +1,24 @@
+{% extends 'analyze/base.html' %}
+{% load bootstrap4 %}
+{% block meta_title %}{% if object.pk %}{{ object.subject }}{% else %}新規作成{% endif %}{% endblock %}
+{% block page_title %}{% if object.pk %}{{ object.subject }}{% else %}新規作成{% endif %}{% endblock %}
+{% block content %}
+  <form method="post">
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          {% bootstrap_form form layout='inline' %}
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-6">
+          <button class="btn btn-primary" name='preserve'>保存</button>
+        </div>
+        <div class="col-6">
+          <button class="btn btn-primary" name='select'>選択</button>
+        </div>
+      </div>
+    </div>
+    {% csrf_token %}
+  </form>
+{% endblock %}
